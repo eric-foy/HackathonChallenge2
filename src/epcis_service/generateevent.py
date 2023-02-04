@@ -23,7 +23,6 @@ def genSampleEvent():
     ET.SubElement(readPoint, 'id').text = 'urn:epc:id:sgln:0614141.07346.1234'
 
     return ET.tostring(root, encoding='utf8', method='xml')
-    #return ET.tostring(root)
 
 def genObservationEvent(sgtin, sgln, quantity, uom):
     rootArgs = {'xmlns:epcis':'urn:epcglobal:epcis:xsd:1',
@@ -49,6 +48,7 @@ def genObservationEvent(sgtin, sgln, quantity, uom):
     extension = ET.SubElement(ObjectEvent, 'extension')
     quantityList = ET.SubElement(extension, 'quantityList')
     quantityElement = ET.SubElement(quantityList, 'quantityElement')
+    ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:idpat:sgtin:'+sgtin[:-1]+'*'
     ET.SubElement(quantityElement, 'quantity').text = quantity
     ET.SubElement(quantityElement, 'uom').text = uom
 
