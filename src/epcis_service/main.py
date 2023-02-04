@@ -80,6 +80,22 @@ uomOut = 'each'
 xml = generateevent.genTransformationEvent(sgtinIn1, sgtinIn2, sgtinIn3, sgtinOut, sgln, quantity1, quantity2, quantity3, quantityOut, uom1, uom2, uom3, uomOut)
 capture.capture(xml)
 
+#############################
+# Aggregate products
+#############################
+
+# case of 25 salids
+# containers
+gtin = '10810055939012'
+gtin = gtin[1:len(prefix)+1]+'.'+gtin[0]+gtin[len(prefix)+1:-1]
+serial = serial + 1
+sgtin = gtin+'.'+str(serial)
+sgln = '0810055931248'
+quantity = '25'
+uom = 'each'
+xml = generateevent.genAggregationEvent(sgtin, sgln, quantity, uom)
+capture.capture(xml)
+
 
 #xml = xml + '<epcis:EPCISDocument xmlns:epcis="urn:epcglobal:epcis:xsd:1" xmlns:example="http://ns.example.com/epcis" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="1.2"><EPCISBody><EventList><ObjectEvent> <eventTime>2005-04-03T20:33:31.116-06:00</eventTime><eventTimeZoneOffset>-06:00</eventTimeZoneOffset><epcList><epc>urn:epc:id:sgtin:0614141.107346.2017</epc></epcList><action>OBSERVE</action><readPoint><id>urn:epc:id:sgln:0614141.07346.1234</id></readPoint></ObjectEvent></EventList></EPCISBody></epcis:EPCISDocument>'
 

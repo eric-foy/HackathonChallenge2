@@ -103,5 +103,30 @@ def genTransformationEvent(sgtinIn1, sgtinIn2, sgtinIn3, sgtinOut, sgln, quantit
 
     return ET.tostring(root, encoding='utf8', method='xml')
 
-def genAggregationEvent():
-    pass
+def genAggregationEvent(sgtin, sgln, quantity, uom):
+    rootArgs = {'xmlns:epcis':'urn:epcglobal:epcis:xsd:1',
+            'xmlns:example':'http://ns.example.com/epcis',
+            'xmlns:xsi':'http://www.w3.org/2001/XMLSchema-instance',
+            'schemaVersion':'1.2'}
+    root = ET.Element('epcis:EPCISDocument', rootArgs)
+
+    EPCISBody = ET.SubElement(root, 'EPCISBody')
+    EventList = ET.SubElement(EPCISBody, 'EventList')
+
+    AggregationEvent = ET.SubElement(EventList, 'AggregationEvent')
+    ET.SubElement(AggregationEvent, 'eventTime').text = eventtime.now()
+    ET.SubElement(AggregationEvent, 'parentID').text = 'urn:epc:id:sgtin:'+sgtin
+
+    ET.SubElement(AggregationEvent, 'action').text = 'ADD'
+
+    bizLocation = ET.SubElement(AggregationEvent, 'bizLocation')
+    ET.SubElement(bizLocation, 'id').text = 'urn:epc:id:sgln:'+sgln
+
+    extension = ET.SubElement(AggregationEvent, 'extension')
+    childQuantityList = ET.SubElement(extension, 'childQuantityList')
+    quantityElement = ET.SubElement(childQuantityList, 'quantityElement')
+    ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:idpat:sgtin:'+sgtin[:-1]+'*'
+    ET.SubElement(quantityElement, 'quantity').text = quantity
+    ET.SubElement(quantityElement, 'uom').text = uom
+
+    return ET.tostring(root, encoding='utf8', method='xml')
