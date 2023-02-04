@@ -1,3 +1,3 @@
 # Hackathon Challenge 2
 
-By Eric, Bobo, and Karim Unisa
+By Eric, William, and Karim Unisa
