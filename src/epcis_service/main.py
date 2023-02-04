@@ -6,9 +6,11 @@ import generateevent
 #xml = generateevent.genSampleEvent()
 
 serial = 0
+prefix = '081005593'
 
 # lettuce
 gtin = '10810055931016'
+gtin = gtin[1:len(prefix)+1]+'.'+gtin[0]+gtin[len(prefix)+1:-1]
 serial = serial + 1
 sgtin = gtin+'.'+str(serial)
 sgln = '0810055931231'
@@ -19,6 +21,7 @@ capture.capture(xml)
 
 # tomatos
 gtin = '10810055931023'
+gtin = gtin[1:len(prefix)+1]+'.'+gtin[0]+gtin[len(prefix)+1:-1]
 serial = serial + 1
 sgtin = gtin+'.'+str(serial)
 sgln = '0810055931231'
@@ -29,6 +32,7 @@ capture.capture(xml)
 
 # containers
 gtin = '10810055931030'
+gtin = gtin[1:len(prefix)+1]+'.'+gtin[0]+gtin[len(prefix)+1:-1]
 serial = serial + 1
 sgtin = gtin+'.'+str(serial)
 sgln = '0810055931231'
