@@ -8,6 +8,10 @@ import generateevent
 serial = 0
 prefix = '081005593'
 
+#############################
+# Recieve products
+#############################
+
 # lettuce
 gtin = '10810055931016'
 gtin = gtin[1:len(prefix)+1]+'.'+gtin[0]+gtin[len(prefix)+1:-1]
@@ -39,6 +43,41 @@ sgln = '0810055931231'
 quantity = '500'
 uom = 'each'
 xml = generateevent.genObservationEvent(sgtin, sgln, quantity, uom)
+capture.capture(xml)
+
+#############################
+# Produce products
+#############################
+gtin1 = '10810055931016'
+gtin1 = gtin1[1:len(prefix)+1]+'.'+gtin1[0]+gtin1[len(prefix)+1:-1]
+serial = serial + 1
+sgtinIn1 = gtin1+'.'+str(serial)
+quantity1 = '0.4'
+uom1 = 'each'
+
+gtin2 = '10810055931023'
+gtin2 = gtin2[1:len(prefix)+1]+'.'+gtin2[0]+gtin2[len(prefix)+1:-1]
+serial = serial + 1
+sgtinIn2 = gtin2+'.'+str(serial)
+quantity2 = '0.5'
+uom2 = 'LB'
+
+gtin3 = '10810055931030'
+gtin3 = gtin3[1:len(prefix)+1]+'.'+gtin3[0]+gtin3[len(prefix)+1:-1]
+serial = serial + 1
+sgtinIn3 = gtin3+'.'+str(serial)
+quantity3 = '1'
+uom3 = 'each'
+
+gtinOut = '10810055939015'
+gtinOut = gtinOut[1:len(prefix)+1]+'.'+gtinOut[0]+gtinOut[len(prefix)+1:-1]
+serial = serial + 1
+sgtinOut = gtinOut+'.'+str(serial)
+sgln = '0810055931248'
+quantityOut = '1'
+uomOut = 'each'
+
+xml = generateevent.genTransformationEvent(sgtinIn1, sgtinIn2, sgtinIn3, sgtinOut, sgln, quantity1, quantity2, quantity3, quantityOut, uom1, uom2, uom3, uomOut)
 capture.capture(xml)
 
 
