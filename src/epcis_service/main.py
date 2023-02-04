@@ -18,9 +18,11 @@ gtin = gtin[1:len(prefix)+1]+'.'+gtin[0]+gtin[len(prefix)+1:-1]
 serial = serial + 1
 sgtin = gtin+'.'+str(serial)
 sgln = '0810055931231'
+lot = 'AB1234'
+lgtin = gtin+'.'+lot
 quantity = '20'
 uom = 'each'
-xml = generateevent.genObservationEvent(sgtin, sgln, quantity, uom)
+xml = generateevent.genObservationEvent(sgtin, sgln, quantity, uom, lgtin)
 capture.capture(xml)
 
 # tomatos
@@ -29,9 +31,11 @@ gtin = gtin[1:len(prefix)+1]+'.'+gtin[0]+gtin[len(prefix)+1:-1]
 serial = serial + 1
 sgtin = gtin+'.'+str(serial)
 sgln = '0810055931231'
+lot = '199X'
+lgtin = gtin+'.'+lot
 quantity = '50'
 uom = 'LB'
-xml = generateevent.genObservationEvent(sgtin, sgln, quantity, uom)
+xml = generateevent.genObservationEvent(sgtin, sgln, quantity, uom, lgtin)
 capture.capture(xml)
 
 # containers

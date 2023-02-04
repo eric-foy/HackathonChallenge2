@@ -24,7 +24,7 @@ def genSampleEvent():
 
     return ET.tostring(root, encoding='utf8', method='xml')
 
-def genObservationEvent(sgtin, sgln, quantity, uom):
+def genObservationEvent(sgtin, sgln, quantity, uom, lgtin=None):
     rootArgs = {'xmlns:epcis':'urn:epcglobal:epcis:xsd:1',
             'xmlns:example':'http://ns.example.com/epcis',
             'xmlns:xsi':'http://www.w3.org/2001/XMLSchema-instance',
@@ -51,6 +51,9 @@ def genObservationEvent(sgtin, sgln, quantity, uom):
     ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:idpat:sgtin:'+sgtin[:-1]+'*'
     ET.SubElement(quantityElement, 'quantity').text = quantity
     ET.SubElement(quantityElement, 'uom').text = uom
+    if lgtin is not None:
+        quantityElement = ET.SubElement(quantityList, 'quantityElement')
+        ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:class:lgtin:'+lgtin
 
     return ET.tostring(root, encoding='utf8', method='xml')
 
