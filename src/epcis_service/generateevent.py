@@ -1,4 +1,5 @@
 import xml.etree.cElementTree as ET
+import eventtime
 
 def genSampleEvent():
     rootArgs = {'xmlns:epcis':'urn:epcglobal:epcis:xsd:1',
@@ -11,7 +12,8 @@ def genSampleEvent():
     EventList = ET.SubElement(EPCISBody, 'EventList')
 
     ObjectEvent = ET.SubElement(EventList, 'ObjectEvent')
-    ET.SubElement(ObjectEvent, 'eventTime').text = '2005-04-03T20:33:31.116-06:00'
+    ET.SubElement(ObjectEvent, 'eventTime').text = eventtime.now()
+    #ET.SubElement(ObjectEvent, 'eventTime').text = '2005-04-03T20:33:31.116-06:00'
     ET.SubElement(ObjectEvent, 'eventTimeZoneOffset').text = '-06:00'
 
     epcList = ET.SubElement(ObjectEvent, 'epcList')
@@ -24,3 +26,12 @@ def genSampleEvent():
 
     return ET.tostring(root, encoding='utf8', method='xml')
     #return ET.tostring(root)
+
+def genObservationEvent():
+    pass
+
+def genTransformationEvent():
+    pass
+
+def genAggregationEvent():
+    pass
