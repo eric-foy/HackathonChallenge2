@@ -57,7 +57,7 @@ def genObservationEvent(sgtin, sgln, quantity, uom, lgtin=None):
 
     return ET.tostring(root, encoding='utf8', method='xml')
 
-def genTransformationEvent(sgtinIn1, sgtinIn2, sgtinIn3, sgtinOut, sgln, quantity1, quantity2, quantity3, quantityOut, uom1, uom2, uom3, uomOut):
+def genTransformationEvent(sgtinIn1, sgtinIn2, sgtinIn3, sgtinOut, sgln, quantity1, quantity2, quantity3, quantityOut, uom1, uom2, uom3, uomOut, lgtinIn1=None, lgtinIn2=None, lgtinOut=None, lgtinIn3=None):
     rootArgs = {'xmlns:epcis':'urn:epcglobal:epcis:xsd:1',
             'xmlns:example':'http://ns.example.com/epcis',
             'xmlns:xsi':'http://www.w3.org/2001/XMLSchema-instance',
@@ -81,16 +81,25 @@ def genTransformationEvent(sgtinIn1, sgtinIn2, sgtinIn3, sgtinOut, sgln, quantit
     ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:idpat:sgtin:'+sgtinIn1[:-1]+'*'
     ET.SubElement(quantityElement, 'quantity').text = quantity1
     ET.SubElement(quantityElement, 'uom').text = uom1
+    if lgtinIn1 is not None:
+        quantityElement = ET.SubElement(inputQuantityList, 'quantityElement')
+        ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:class:lgtin:'+lgtinIn1
 
     quantityElement = ET.SubElement(inputQuantityList, 'quantityElement')
     ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:idpat:sgtin:'+sgtinIn2[:-1]+'*'
     ET.SubElement(quantityElement, 'quantity').text = quantity2
     ET.SubElement(quantityElement, 'uom').text = uom2
+    if lgtinIn2 is not None:
+        quantityElement = ET.SubElement(inputQuantityList, 'quantityElement')
+        ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:class:lgtin:'+lgtinIn2
 
     quantityElement = ET.SubElement(inputQuantityList, 'quantityElement')
     ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:idpat:sgtin:'+sgtinIn3[:-1]+'*'
     ET.SubElement(quantityElement, 'quantity').text = quantity3
     ET.SubElement(quantityElement, 'uom').text = uom3
+    if lgtinIn3 is not None:
+        quantityElement = ET.SubElement(inputQuantityList, 'quantityElement')
+        ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:class:lgtin:'+lgtinIn3
 
     outputEPCList = ET.SubElement(TransformationEvent, 'outputEPCList')
     ET.SubElement(outputEPCList, 'epc').text = 'urn:epc:id:sgtin:'+sgtinOut
@@ -100,6 +109,9 @@ def genTransformationEvent(sgtinIn1, sgtinIn2, sgtinIn3, sgtinOut, sgln, quantit
     ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:idpat:sgtin:'+sgtinOut[:-1]+'*'
     ET.SubElement(quantityElement, 'quantity').text = quantityOut
     ET.SubElement(quantityElement, 'uom').text = uomOut
+    if lgtinOut is not None:
+        quantityElement = ET.SubElement(outputQuantityList, 'quantityElement')
+        ET.SubElement(quantityElement, 'epcClass').text = 'urn:epc:class:lgtin:'+lgtinOut
 
     bizLocation = ET.SubElement(TransformationEvent, 'bizLocation')
     ET.SubElement(bizLocation, 'id').text = 'urn:epc:id:sgln:'+sgln
