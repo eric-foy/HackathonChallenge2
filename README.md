@@ -19,13 +19,14 @@ The last event is an aggregation event. This is where we pack the salads into ca
 That was part two of our application. Part three will demonstrate the usefulness of having this database.
 
 What is shown on the screen is a graph of the time it takes from when the  ingredients arrive at the processing line till when they leave in cases by the day.
-
 This is one of the many statistical observations you can make with this data. We plan to offer many different ways to view and sort this data.
 
 Some examples would be:
  - An employee is using too much lettuce. Using the unit of measure and expected quantity we can visualise this.
  - A box of tomoatos has gotten lost in the facility. We can automatically flag this and alert someone to find and dispoce of them using the arrival time.
  - Wrong ingredients arrive at the facility. The GTIN is not on our appoved list and we flag these at entry.
+
+The source code in [main.py](https://github.com/eric-foy/HackathonChallenge2/blob/main/src/epcis_service/main.py) is broken down into the 3 parts so you can see what were talking about under the hood.
 
 ## How to run
 ```console
