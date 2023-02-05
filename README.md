@@ -14,11 +14,11 @@ The first events are observation events when we receive an item at the processin
 
 The next event is a transformation event. This is where we transform the ingredients into finished salad assigning the new traceablility lot code. This event will be triggered when we print a barcode for the finished salad.
 
-The last event is an aggregation event. This is where we pack the salads into cases. This event will be triggered when we print a barcode the the case of salads.
+The last event is an aggregation event. This is where we pack the salads into cases. This event will be triggered when we print a barcode for the case of salads.
 
 That was part two of our application. Part three will demonstrate the usefulness of having this database.
 
-What is shown on the screen is a graph of the time it takes from when the  ingredients arrive at the processing line till the leave in cases by the day.
+What is shown on the screen is a graph of the time it takes from when the  ingredients arrive at the processing line till when they leave in cases by the day.
 
 This is one of the many statistical observations you can make with this data. We plan to offer many different ways to view and sort this data.
 
