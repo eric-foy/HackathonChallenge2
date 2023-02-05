@@ -2,6 +2,8 @@
 
 By Eric Foy, William, and Karim Unisa
 
+[![video image](https://github.com/eric-foy/HackathonChallenge2/blob/main/presentation/presentation.png)](https://youtu.be/JaO7ZaTQ7eE)
+
 ## What does it do
 Running the application will ask you to scan our barcodes.
 
