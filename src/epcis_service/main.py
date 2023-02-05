@@ -111,9 +111,11 @@ gtin = gtin[1:len(prefix)+1]+'.'+gtin[0]+gtin[len(prefix)+1:-1]
 serial = serial + 1
 sgtin = gtin+'.'+str(serial)
 sgln = '0810055931248'
+lot = 'AB1234199X'
+lgtin = gtin+'.'+lot
 quantity = '25'
 uom = 'each'
-xml = generateevent.genAggregationEvent(sgtin, sgln, quantity, uom)
+xml = generateevent.genAggregationEvent(sgtin, sgln, quantity, uom, lgtin)
 capture.capture(xml)
 
 
