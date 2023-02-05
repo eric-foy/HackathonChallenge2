@@ -1,5 +1,30 @@
+import capture
+import generateevent
+
+serial = 0
+prefix = '081005593'
+
 ########################################################
-# Part 1 - Simulation of ESCIS transactions
+# Part 1 - Scan barcode and record transaction
+########################################################
+
+gtin = input('please scan...')
+# containers
+#gtin = '10810055931030'
+gtin = gtin[2:]
+print(gtin)
+gtin = gtin[1:len(prefix)+1]+'.'+gtin[0]+gtin[len(prefix)+1:-1]
+serial = serial + 1
+sgtin = gtin+'.'+str(serial)
+sgln = '0810055931231'
+quantity = '500'
+uom = 'each'
+xml = generateevent.genObservationEvent(sgtin, sgln, quantity, uom)
+capture.capture(xml)
+
+input("press enter for next part...")
+########################################################
+# Part 2 - Simulation of ESCIS transactions
 # Simulate receiving:
 #   pack of lettuce 20 ct
 #   50 LB of tomatos
@@ -8,16 +33,6 @@
 # Simulate aggregating:
 #   25 salids into a case
 ########################################################
-
-import capture
-import generateevent
-
-#xml = '<?xml	version="1.0"	encoding="UTF-8"	standalone="yes"?>'
-#xml = xml + generateevent.genSampleEvent().decode("utf-8") 
-#xml = generateevent.genSampleEvent()
-
-serial = 0
-prefix = '081005593'
 
 #############################
 # Recieve products
@@ -118,7 +133,12 @@ uom = 'each'
 xml = generateevent.genAggregationEvent(sgtin, sgln, quantity, uom, lgtin)
 capture.capture(xml)
 
+input("press enter for next part...")
+########################################################
+# Part 3 - Simulation for processing thousands of salids
+########################################################
 
-########################################################
-# Part 2 - Simulation for processing thousands of salids
-########################################################
+# 20 cases of 20 packs of lettuce for 400 lettuce
+# 10 cases of 50 pounds of tomatos for 500 tomatos
+# 40 cases of 25 salids each for 1000 salids produced
+
