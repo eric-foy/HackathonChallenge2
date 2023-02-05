@@ -6,7 +6,7 @@ By Eric Foy, William, and Karim Unisa
 Running the application will ask you to scan our barcodes.
 
 [lettuce.btw](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/lettuce.btw)
-![lettuce image](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/lettuce.png)
+![lettuce image](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/lettuce.png | width=80)
 
 [tomatos.btw](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/tomatos.btw)
 ![tomatos image](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/tomatos.png)
