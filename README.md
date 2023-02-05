@@ -9,12 +9,16 @@ Running the application will ask you to scan our barcodes.
 ![lettuce image](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/lettuce.png)
 
 [tomatos.btw](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/tomatos.btw)
+![tomatos image](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/tomatos.png)
 
 [containers.btw](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/containers.btw)
+![containers image](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/containers.png)
 
 [item.btw](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/item.btw)
+![item image](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/item.png)
 
 [Case.btw](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/Case.btw)
+![case image](https://github.com/eric-foy/HackathonChallenge2/blob/main/Barcodes/case.png)
 
 
 Scanning these will capture the GTIN and lot code of the item. These KDE's, key data element, along with its other KDE's will be sent to our EPCIS database. The other KDE's we store in our database are the traceablility lot code, the unit of measure, and the quantity. These are required by the FDA Food traceability list. We also store other data such as the cature time and GLN.
