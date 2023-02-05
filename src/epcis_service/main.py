@@ -1,5 +1,6 @@
 import capture
 import generateevent
+import simulation
 
 serial = 0
 prefix = '081005593'
@@ -12,7 +13,6 @@ gtin = input('please scan...')
 # containers
 #gtin = '10810055931030'
 gtin = gtin[2:]
-print(gtin)
 gtin = gtin[1:len(prefix)+1]+'.'+gtin[0]+gtin[len(prefix)+1:-1]
 serial = serial + 1
 sgtin = gtin+'.'+str(serial)
@@ -142,3 +142,4 @@ input("press enter for next part...")
 # 10 cases of 50 pounds of tomatos for 500 tomatos
 # 40 cases of 25 salids each for 1000 salids produced
 
+simulation.simulate()
